@@ -281,6 +281,16 @@ a:hover { text-decoration: underline; }
 .tree .tnode.done circle { fill: rgba(89,211,196,.18); stroke: var(--accent2); }
 .tree .tnode.swap circle { fill: rgba(124,139,255,.2); stroke: var(--accent); }
 
+/* graph */
+.graph .gedge { stroke: var(--line); stroke-width: 2; }
+.graph .garrow { fill: var(--line); }
+.graph .gnode circle { fill: var(--panel); stroke: var(--line); stroke-width: 2; transition: all .25s; }
+.graph .gnode text { fill: var(--ink); font-family: var(--mono); font-size: 12px; text-anchor: middle; }
+.graph .gnode.visit circle { fill: rgba(255,184,77,.22); stroke: var(--cur); }
+.graph .gnode.done circle { fill: rgba(89,211,196,.18); stroke: var(--accent2); }
+.graph .gnode.cur circle { fill: rgba(255,184,77,.3); stroke: var(--cur); }
+.graph .gnode.bad circle { fill: rgba(255,107,129,.18); stroke: var(--bad); }
+
 /* grid */
 .grid { display: inline-flex; flex-direction: column; gap: 3px; }
 .grow { display: flex; gap: 3px; }
@@ -299,8 +309,7 @@ a:hover { text-decoration: underline; }
 .bit.one { border-color: var(--cur); box-shadow: 0 0 0 2px rgba(255,184,77,.4); }
 .bit.cur { border-color: var(--cur); transform: translateY(-3px); }
 
-/* intervals / timeline */
-.timeline { display: flex; flex-direction: column; gap: 6px; min-width: 260px; }
+/* intervals / timeline */.timeline { display: flex; flex-direction: column; gap: 6px; min-width: 260px; }
 .trow { height: 24px; display: flex; align-items: center; }
 .bar { height: 20px; border-radius: 6px; display: grid; place-items: center; font-family: var(--mono); font-size: 11px; color: #0c0f22; font-weight: 700; background: var(--accent); transition: all .3s; white-space: nowrap; overflow: hidden; }
 .bar.a { background: var(--accent); }

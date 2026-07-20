@@ -187,6 +187,46 @@
       return panelShell(p, `<div class="grid">${rows}</div>`);
     },
 
+    graph(p) {
+      const nodes = p.nodes || [];
+      const N = Math.max(1, nodes.length);
+      const R = 66, cx = 100, cy = 92;
+      const pos = {};
+      nodes.forEach((nd, i) => {
+        const a = -Math.PI / 2 + (i * 2 * Math.PI) / N;
+        pos[nd.id] = [cx + R * Math.cos(a), cy + R * Math.sin(a)];
+      });
+      let edges = "";
+      (p.edges || []).forEach((e) => {
+        const a = pos[e[0]], b = pos[e[1]];
+        if (!a || !b) return;
+        if (p.directed) {
+          // shorten toward target so the arrow marker shows
+          const dx = b[0] - a[0], dy = b[1] - a[1];
+          const len = Math.hypot(dx, dy) || 1;
+          const bx = b[0] - (dx / len) * 16, by = b[1] - (dy / len) * 16;
+          edges += `<line x1="${a[0]}" y1="${a[1]}" x2="${bx}" y2="${by}" class="gedge" marker-end="url(#arrow)"/>`;
+        } else {
+          edges += `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" class="gedge"/>`;
+        }
+      });
+      let circles = "";
+      nodes.forEach((nd) => {
+        const h = (p.highlight && p.highlight[nd.id]) || nd.cls || "";
+        const [x, y] = pos[nd.id];
+        circles += `<g class="gnode ${h}"><circle cx="${x}" cy="${y}" r="15"/><text x="${x}" y="${
+          y + 5
+        }">${esc(nd.label != null ? nd.label : nd.id)}</text></g>`;
+      });
+      const defs = p.directed
+        ? `<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="garrow"/></marker></defs>`
+        : "";
+      return panelShell(
+        p,
+        `<svg class="graph" viewBox="0 0 200 184" width="220" height="184">${defs}${edges}${circles}</svg>`
+      );
+    },
+
     dp(p) {
       return Panels.array(Object.assign({ variant: "dp" }, p));
     },
