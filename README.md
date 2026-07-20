@@ -91,6 +91,6 @@ The `<slug>` must match the problem title slug (e.g. "Two Sum" → `two-sum`).
 
 ## ✅ Status
 
-Framework + **69 fully-animated problems** across every visualization type; the remaining
-problems are in the catalog with links and chat support, ready to be authored one file at a
-time.
+**Complete: all 75 problems** are fully authored with kid-friendly stories, from-scratch
+concepts, animated walkthroughs with live code spotlighting, and time/space complexity —
+across every visualization type and all 18 NeetCode categories.
