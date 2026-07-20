@@ -91,6 +91,6 @@ The `<slug>` must match the problem title slug (e.g. "Two Sum" → `two-sum`).
 
 ## ✅ Status
 
-Framework + **24 fully-animated problems** across every visualization type; the remaining
+Framework + **32 fully-animated problems** across every visualization type; the remaining
 problems are in the catalog with links and chat support, ready to be authored one file at a
 time.
