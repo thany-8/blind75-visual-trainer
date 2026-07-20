@@ -299,6 +299,17 @@ a:hover { text-decoration: underline; }
 .bit.one { border-color: var(--cur); box-shadow: 0 0 0 2px rgba(255,184,77,.4); }
 .bit.cur { border-color: var(--cur); transform: translateY(-3px); }
 
+/* intervals / timeline */
+.timeline { display: flex; flex-direction: column; gap: 6px; min-width: 260px; }
+.trow { height: 24px; display: flex; align-items: center; }
+.bar { height: 20px; border-radius: 6px; display: grid; place-items: center; font-family: var(--mono); font-size: 11px; color: #0c0f22; font-weight: 700; background: var(--accent); transition: all .3s; white-space: nowrap; overflow: hidden; }
+.bar.a { background: var(--accent); }
+.bar.b { background: var(--accent2); }
+.bar.merged { background: var(--good); }
+.bar.cur { background: var(--cur); box-shadow: 0 0 0 2px rgba(255,184,77,.5); }
+.bar.dim { background: var(--panel2); color: var(--ink-dim); }
+.axis { display: flex; justify-content: space-between; font-size: 10px; color: var(--ink-dim); font-family: var(--mono); border-top: 1px dashed var(--line); padding-top: 3px; margin-top: 2px; }
+
 /* note panel */
 .note { background: var(--panel); }
 .note.good { border-color: var(--good); background: rgba(55,214,122,.1); }

@@ -191,6 +191,29 @@
       return Panels.array(Object.assign({ variant: "dp" }, p));
     },
 
+    intervals(p) {
+      const items = p.items || [];
+      let lo = p.range ? p.range[0] : Math.min.apply(null, items.map((it) => it.start));
+      let hi = p.range ? p.range[1] : Math.max.apply(null, items.map((it) => it.end));
+      const span = Math.max(1, hi - lo);
+      const rows = items
+        .map((it) => {
+          const left = ((it.start - lo) / span) * 100;
+          const width = Math.max(3, ((it.end - it.start) / span) * 100);
+          const label = it.label != null ? it.label : it.start + "–" + it.end;
+          return `<div class="trow"><div class="bar ${it.cls || ""}" style="margin-left:${left}%;width:${width}%">${esc(
+            label
+          )}</div></div>`;
+        })
+        .join("");
+      return panelShell(
+        p,
+        `<div class="timeline">${rows}<div class="axis"><span>${esc(lo)}</span><span>${esc(
+          hi
+        )}</span></div></div>`
+      );
+    },
+
     bits(p) {
       const width = p.width || 8;
       const val = p.value >>> 0;
